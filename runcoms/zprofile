@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='subl'
+export VISUAL='subl'
 export PAGER='less'
 
 #
@@ -72,3 +72,9 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+alias fuck='$(thefuck $(fc -ln -1))'
+
+alias grw='grunt watch'
+alias grd='grunt dev'
+alias grut='grunt unit-tests'
