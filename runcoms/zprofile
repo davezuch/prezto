@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='subl'
-export VISUAL='subl'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -32,6 +32,9 @@ fi
 #
 # Paths
 #
+
+#export VIM='/usr/local/Cellar/neovim/0.1.4/share/nvim'
+#export VIMRUNTIME='/usr/local/Cellar/neovim/0.1.4/share/nvim/runtime'
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
