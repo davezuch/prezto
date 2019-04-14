@@ -6,6 +6,11 @@
 #
 
 #
+# Editor
+#
+export TERM='screen-256color'
+
+#
 # Browser
 #
 
@@ -17,8 +22,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 #
@@ -33,6 +38,8 @@ fi
 # Paths
 #
 
+export KUBECONFIG=$KUBECONFIG:~/.kube/config-citizennet-nonprod
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -43,7 +50,10 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ~/.local/bin
   /usr/local/{bin,sbin}
+  /home/david/.yarn/bin
+  /home/david/src/devops/bin
   $path
 )
 
