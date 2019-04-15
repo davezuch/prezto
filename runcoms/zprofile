@@ -38,7 +38,7 @@ fi
 # Paths
 #
 
-export KUBECONFIG=$KUBECONFIG:~/.kube/config-citizennet-nonprod
+export KUBECONFIG=$KUBECONFIG:~/.kube/config
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -52,8 +52,9 @@ typeset -gU cdpath fpath mailpath path
 path=(
   ~/.local/bin
   /usr/local/{bin,sbin}
-  /home/david/.yarn/bin
-  /home/david/src/devops/bin
+  ~/bin
+  ~/.yarn/bin
+  ~/src/devops/bin
   $path
 )
 
