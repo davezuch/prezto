@@ -8,7 +8,12 @@
 #
 # Editor
 #
-export TERM='screen-256color'
+# export TERM='screen-256color'
+tic -x -o ~/.terminfo ~/xterm-24bit.terminfo
+export TERM=xterm-24bit
+
+# ssh truecolor support https://github.com/syl20bnr/spacemacs/wiki/Terminal
+alias ssh="TERM=xterm-256color ssh"
 
 #
 # Browser
@@ -22,8 +27,8 @@ fi
 # Editors
 #
 
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -t'
 export PAGER='less'
 
 #
@@ -31,7 +36,9 @@ export PAGER='less'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LANGUAGE=en_US.UTF-8
 fi
 
 #
@@ -55,8 +62,17 @@ path=(
   ~/bin
   ~/.yarn/bin
   ~/src/devops/bin
+  /snap/bin
+  /usr/lib/x86_64-linux-gnu/pkgconfig
   $path
 )
+
+#
+# NVM
+#
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #
 # Less
@@ -77,8 +93,20 @@ fi
 # k8s
 #
 alias k=kubectl
+export KUBECONFIG=$KUBECONFIG:~/.kube/config-citizennet-nonprod
+
+#
+# Make
+#
+export RTS_ARGS='+RTS -N2 -A800m -RTS'
+function m () {
+    local ARGS=$@
+    echo "time (make $ARGS)"
+    time (make $ARGS)
+}
 
 #
 # Nix
 #
 source ~/.nix-profile/etc/profile.d/nix.sh
+eval "$(direnv hook zsh)"
